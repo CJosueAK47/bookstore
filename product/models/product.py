@@ -7,6 +7,6 @@ class Product(models.Model):
     price = models.PositiveBigIntegerField(null=True)
     active = models.BooleanField(default=True)
     categories = models.ManyToManyField(Category, blank=True)
-    
+
 
 
