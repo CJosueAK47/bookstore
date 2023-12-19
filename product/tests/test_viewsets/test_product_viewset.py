@@ -15,8 +15,8 @@ class TestProductViewSet(APITestCase):
 
     def setUp(self):
         self.user = UserFactory()
-        token = Token.objects.create(user=self.user)  # added
-        token.save()  # added
+        #token = Token.objects.create(user=self.user)  # added
+        #token.save()  # added
 
         self.product = ProductFactory(
             title="pro controller",
