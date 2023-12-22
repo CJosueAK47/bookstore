@@ -14,6 +14,7 @@ class UserFactory(factory.django.DjangoModelFactory):
 
 class OrderFactory(factory.django.DjangoModelFactory):
     user = factory.SubFactory(UserFactory)
+    #id = factory.Faker('pyint')
 
     @factory.post_generation
     def product(self, create, extracted, **kwargs):

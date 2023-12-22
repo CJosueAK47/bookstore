@@ -1,12 +1,11 @@
 from rest_framework import serializers
-from product.models.category import Category
+#from product.models.category import Category
 
-from product.models.product import Product
+from product.models.product import Product, Category
 from product.serializers.category_serializer import CategorySerializer
 
 class ProductSerializer(serializers.ModelSerializer):
-    #category = CategorySerializer(many=True) - linha de código problemática, estava fazendo com que 
-    #"category" não brederizasse como um input
+    category = CategorySerializer(read_only=True, many=True) 
     categories_id = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), write_only=True , many=True) 
 
     class Meta:
