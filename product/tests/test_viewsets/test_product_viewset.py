@@ -67,20 +67,32 @@ from order.factories import UserFactory
 from product.factories import CategoryFactory, ProductFactory
 from product.models import Product
 
+from rest_framework.authtoken.models import Token
+
+from rest_framework import permissions
+
 class TestProductViewSet(APITestCase):
     client = APIClient()
 
     def setUp(self):
         self.user = UserFactory()
+
+        token = Token.objects.create(user=self.user)  # added
+        token.save()  # added
+        print("User Token:", token.key)
         self.product = ProductFactory(
             title="pro controller",
             price=200.00,
         )
 
     def test_get_all_product(self):
+        token = Token.objects.get(user__username=self.user.username)
+        self.client.credentials(HTTP_AUTHORIZATION="Token " + token.key)
+
         response = self.client.get(
             reverse("product-list", kwargs={"version": "v1"}))
-
+        # Verificar se o usuário tem permissão para visualizar produtos
+        #self.assertTrue(permissions.IsAuthenticated().has_permission(self.client.get("/api/v1/products/").wsgi_request, None))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         try:
@@ -106,6 +118,12 @@ class TestProductViewSet(APITestCase):
             raise  # Ressalta a exceção para que o teste seja marcado como falha
 
     def test_create_product(self):
+        token = Token.objects.get(user__username=self.user.username)
+        self.client.credentials(HTTP_AUTHORIZATION="Token " + token.key)
+
+        # Verificar se o usuário tem permissão para criar produtos
+        #self.assertTrue(permissions.IsAuthenticated().has_permission(self.client.post("/api/v1/products/", {}).wsgi_request, None))
+
         category = CategoryFactory()
         data = json.dumps(
             {"title": "notebook", "price": 800.00,
@@ -119,6 +137,7 @@ class TestProductViewSet(APITestCase):
         )
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        
 
         created_product = Product.objects.get(title="notebook")
 
