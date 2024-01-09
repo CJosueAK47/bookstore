@@ -1,1 +1,0 @@
-Contrução de uma API Django Rest Framework
