@@ -153,6 +153,6 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", "u)bx$1&h!y+q1q6#!a@o4o0ag$imezquwcfvcuuxvb4m2w194k")
 DEBUG = int(os.environ.get("DEBUG", default=0))
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(" ")
