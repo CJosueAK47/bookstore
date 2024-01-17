@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> f6ac5dfbe4ee90a476827f702ef4cb128c0e3ee7
 from django.db import models
 
 class Category(models.Model):
@@ -11,10 +8,4 @@ class Category(models.Model):
     active = models.BooleanField(default=True)
 
     def __unicode__(self):
-<<<<<<< HEAD
         return self.title
-=======
-        return self.title
-    
-
->>>>>>> f6ac5dfbe4ee90a476827f702ef4cb128c0e3ee7
