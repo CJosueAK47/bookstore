@@ -10,5 +10,8 @@ class Product(models.Model):
     category = models.ManyToManyField(Category, blank=True) #adicionei category aqui (estava faltando)
     #categories = models.ManyToManyField(Category, blank=True) não fica aqui
 
+    def __str__(self):
+        return self.title
+
 
 
