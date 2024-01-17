@@ -18,15 +18,26 @@ class ProductFactory(factory.django.DjangoModelFactory):
     category = factory.LazyAttribute(CategoryFactory)
     title = factory.Faker("pystr")
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f6ac5dfbe4ee90a476827f702ef4cb128c0e3ee7
     @factory.post_generation
     def category(self, create, extracted, **kwargs):
         if not create:
             return
 
         if extracted:
+<<<<<<< HEAD
             for categories in extracted:
                 self.category.add(categories)
 
     class Meta:
         model = Product
+=======
+            for category in extracted:
+                self.category.add(category)
+
+    class Meta:
+        model = Product
+>>>>>>> f6ac5dfbe4ee90a476827f702ef4cb128c0e3ee7

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Bookstore
 
 Bookstore APP from Backend Python course from EBAC
@@ -46,3 +47,6 @@ Docker && docker-compose
    docker-compose exec web python manage.py test
    ```
 
+=======
+Bookstore
+>>>>>>> f6ac5dfbe4ee90a476827f702ef4cb128c0e3ee7
