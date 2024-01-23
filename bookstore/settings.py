@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost",
                  "127.0.0.1",
-                 "leonardoitalo.pythonanywhere.com"]
+                 "cjAK47.pythonanywhere.com"]
 
 
 # Application definition
